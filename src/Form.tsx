@@ -47,13 +47,13 @@ export function IpTrackerForm() {
           import.meta.env.VITE_GEO_API_KEY
         }&${param}`
       );
-      console.log(response, "response");
+      console.log(response);
       const result = await response.json();
-      console.log(result, "result");
+      console.log(result);
       if (!response.ok) {
         throw new Error("Failed to fetch IP data");
       }
-      toast.success("✅ IP data fetched successfully!");
+      toast.success("IP data fetched successfully!");
     } catch (error) {
       console.error(error);
       toast.error(" Failed to fetch IP data");
@@ -63,7 +63,7 @@ export function IpTrackerForm() {
   return (
     <Form {...form}>
       <form
-        className="w-[90%]  max-w-lg mx-auto [@media(min-width:400px)_and_(max-width:600px)]:w-[85%]"
+        className="w-[90%] max-w-lg mx-auto [@media(min-width:500px)_and_(max-width:600px)]:w-[80%]"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -76,7 +76,7 @@ export function IpTrackerForm() {
                   <Input
                     placeholder="e.g. 8.8.8.8 or google.com"
                     {...field}
-                    className="py-6 bg-white text-black md:py-7 md:text-lg"
+                    className="py-6 bg-white text-black sm:py-7 md:text-lg"
                   />{" "}
                   <Button
                     type="submit"
