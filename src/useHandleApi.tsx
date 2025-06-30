@@ -1,11 +1,11 @@
 import { toast } from "sonner";
-import { FormSchema, ipv4Regex, ipv6Regex } from "./helpers";
+import { FormSchema, IPData, ipv4Regex, ipv6Regex } from "./helpers";
 import { useState } from "react";
 import { z } from "zod";
 
 export default function useHandleApi() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<IPData>({} as IPData);
 
   async function GEOAPI(data: z.infer<typeof FormSchema>) {
     const cleanedQuery = data.query.trim().replace(/^https?:\/\//, "");

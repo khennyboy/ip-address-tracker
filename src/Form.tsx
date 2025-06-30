@@ -7,17 +7,16 @@ import { useForm } from "react-hook-form";
 import { BiError } from "react-icons/bi";
 import { FaGreaterThan } from "react-icons/fa";
 import { z } from "zod";
-import { FormSchema } from "./helpers";
-import useHandleApi from "./useHandleApi";
+import { FormSchema, Props } from "./helpers";
 
-export function IpTrackerForm() {
+export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       query: "",
     },
   });
-  const { GEOAPI, isLoading, data } = useHandleApi();
+
 
   return (
     <Form {...form}>

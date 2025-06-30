@@ -17,3 +17,19 @@ export const FormSchema = z.object({
       }
     ),
 });
+
+export interface Props {
+  GEOAPI: (data: z.infer<typeof FormSchema>) => Promise<void>;
+  isLoading: boolean;
+}
+
+export interface IPData {
+  ip?: string;
+  location?: {
+    city?: string;
+    timezone?: string;
+    [key: string]: any;
+  };
+  isp?: string;
+  [key: string]: any;
+}
