@@ -2,8 +2,7 @@ import { Strong, Text } from "@radix-ui/themes";
 import { IPData } from "./helpers";
 
 export default function IPAdressData({ data }: IPData) {
-  console.log(data, 'data');
-   if (!data || Object.keys(data).length === 0) return null;
+  if (!data || Object.keys(data).length === 0) return null;
   return (
     <div className="md:flex items-center *:text-center">
       <div className="*:block">

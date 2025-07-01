@@ -8,6 +8,7 @@ import { BiError } from "react-icons/bi";
 import { FaGreaterThan } from "react-icons/fa";
 import { z } from "zod";
 import { FormSchema, Props } from "./helpers";
+import { useEffect } from "react";
 
 export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -17,6 +18,9 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
     },
   });
 
+  useEffect(() => {
+    GEOAPI({ query: "" });
+  }, []);
 
   return (
     <Form {...form}>

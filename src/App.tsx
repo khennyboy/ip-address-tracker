@@ -1,12 +1,12 @@
 import { Toaster } from "sonner";
-import { IpTrackerForm } from "./Form";
+import { IpTrackerForm } from "./IpTrackerForm";
 import IPAdressData from "./IpAdressData";
 import useHandleApi from "./useHandleApi";
 
 function App() {
   const { GEOAPI, isLoading, data } = useHandleApi();
   return (
-    <div>
+    <>
       <Toaster
         position="top-right"
         toastOptions={{
@@ -17,10 +17,12 @@ function App() {
         <h1 className="text-center text-white mb-2 font-medium text-xl">
           IP Address Tracker
         </h1>
-        <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading} />
+        <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading } />
       </header>
-      <IPAdressData data={data} />
-    </div>
+      <main>
+        <IPAdressData data={data} />
+      </main>
+    </>
   );
 }
 

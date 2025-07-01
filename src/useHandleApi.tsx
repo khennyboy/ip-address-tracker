@@ -11,10 +11,11 @@ export default function useHandleApi() {
     const cleanedQuery = data.query.trim().replace(/^https?:\/\//, "");
     try {
       setIsLoading(true);
-      const param =
-        ipv4Regex.test(cleanedQuery) || ipv6Regex.test(cleanedQuery)
+      const param = cleanedQuery
+        ? ipv4Regex.test(cleanedQuery) || ipv6Regex.test(cleanedQuery)
           ? `ipAddress=${cleanedQuery}`
-          : `domain=${cleanedQuery}`;
+          : `domain=${cleanedQuery}`
+        : "";
 
       const response = await fetch(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${
