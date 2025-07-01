@@ -2,13 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Spinner } from "@radix-ui/themes";
+import { ChevronRightIcon, Loader2Icon } from "lucide-react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { BiError } from "react-icons/bi";
-import { FaGreaterThan } from "react-icons/fa";
 import { z } from "zod";
 import { FormSchema, Props } from "./helpers";
-import { useEffect } from "react";
 
 export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -40,13 +39,26 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                     {...field}
                     className="py-6 bg-white text-black sm:py-7 md:text-lg"
                   />{" "}
-                  <Button
-                    disabled={isLoading}
-                    type="submit"
-                    className="disabled:cursor-not-allowed disabled:pointer-events-auto cursor-pointer absolute right-0 top-0 h-full !px-4 md:!px-6 rounded-l-none disabled:opacity-100"
-                  >
-                    {isLoading ? <Spinner /> : <FaGreaterThan />}
-                  </Button>
+                  <div className="absolute right-0 top-0 h-full *:rounded-l-none flex items-center *:h-full">
+                    {!isLoading ? (
+                      <Button
+                        size="sm"
+                        disabled
+                        className="!px-5 disabled:pointer-events-auto disabled:cursor-not-allowed"
+                      >
+                        <Loader2Icon className="animate-spin" />
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="secondary"
+                        size="icon"
+                        className="size-8 px-6 cursor-pointer"
+                        type="submit"
+                      >
+                        <ChevronRightIcon />
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </FormControl>
               {form.formState.errors.query && (
