@@ -17,9 +17,9 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
     },
   });
 
-  useEffect(() => {
-    GEOAPI({ query: "" });
-  }, []);
+  // useEffect(() => {
+  //   GEOAPI({ query: "" });
+  // }, []);
 
   return (
     <Form {...form}>
@@ -50,9 +50,8 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                       </Button>
                     ) : (
                       <Button
-                        variant="secondary"
                         size="icon"
-                        className="size-8 px-6 cursor-pointer bg-black text-white"
+                        className="size-8 px-6 cursor-pointer"
                         type="submit"
                       >
                         <ChevronRightIcon />
