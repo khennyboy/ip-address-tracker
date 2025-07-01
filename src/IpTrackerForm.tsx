@@ -40,7 +40,7 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                     className="py-6 bg-white text-black sm:py-7 md:text-lg"
                   />{" "}
                   <div className="absolute right-0 top-0 h-full *:rounded-l-none flex items-center *:h-full">
-                    {!isLoading ? (
+                    {isLoading ? (
                       <Button
                         size="sm"
                         disabled
