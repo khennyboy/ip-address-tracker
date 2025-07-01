@@ -40,23 +40,22 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                     className="py-6 bg-white text-black sm:py-7 md:text-lg"
                   />{" "}
                   <div className="absolute right-0 top-0 h-full *:rounded-l-none flex items-center *:h-full">
-                    {isLoading ? (
-                      <Button
-                        size="sm"
-                        disabled
-                        className="!px-5 disabled:pointer-events-auto disabled:cursor-not-allowed"
-                      >
+                    <Button
+                      size={isLoading ? "sm" : "icon"}
+                      disabled={isLoading}
+                      type={isLoading ? "button" : "submit"}
+                      className={`px-6 ${
+                        isLoading
+                          ? "disabled:pointer-events-auto disabled:cursor-not-allowed"
+                          : "cursor-pointer size-8"
+                      }`}
+                    >
+                      {isLoading ? (
                         <Loader2Icon className="animate-spin" />
-                      </Button>
-                    ) : (
-                      <Button
-                        size="icon"
-                        className="size-8 px-6 cursor-pointer"
-                        type="submit"
-                      >
+                      ) : (
                         <ChevronRightIcon />
-                      </Button>
-                    )}
+                      )}
+                    </Button>
                   </div>
                 </div>
               </FormControl>

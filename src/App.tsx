@@ -2,10 +2,10 @@ import { Toaster } from "sonner";
 import { IpTrackerForm } from "./IpTrackerForm";
 import IPAdressData from "./IpAdressData";
 import useHandleApi from "./useHandleApi";
+import { Heading } from "@radix-ui/themes";
 
 function App() {
   const { GEOAPI, isLoading, data } = useHandleApi();
-  console.log(isLoading);
   return (
     <>
       <Toaster
@@ -15,9 +15,7 @@ function App() {
         }}
       />
       <header className="bg-[url('/pattern-bg-mobile.png')]  py-4 lg:bg-[url('/pattern-bg-desktop.png')] lg:py-8">
-        <h1 className="text-center text-white mb-2 font-medium text-xl">
-          IP Address Tracker
-        </h1>
+        <Heading className="text-center text-white">Ip Address Tracker</Heading>
         <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading} />
       </header>
       <main>
