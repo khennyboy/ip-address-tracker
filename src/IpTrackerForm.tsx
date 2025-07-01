@@ -17,9 +17,9 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
     },
   });
 
-  // useEffect(() => {
-  //   GEOAPI({ query: "" });
-  // }, []);
+  useEffect(() => {
+    GEOAPI({ query: "" });
+  }, []);
 
   return (
     <Form {...form}>
