@@ -5,6 +5,7 @@ import useHandleApi from "./useHandleApi";
 
 function App() {
   const { GEOAPI, isLoading, data } = useHandleApi();
+  console.log(isLoading);
   return (
     <>
       <Toaster
@@ -17,7 +18,7 @@ function App() {
         <h1 className="text-center text-white mb-2 font-medium text-xl">
           IP Address Tracker
         </h1>
-        <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading } />
+        <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading} />
       </header>
       <main>
         <IPAdressData data={data} />
