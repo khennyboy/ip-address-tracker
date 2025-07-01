@@ -52,7 +52,7 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                       <Button
                         variant="secondary"
                         size="icon"
-                        className="size-8 px-6 cursor-pointer"
+                        className="size-8 px-6 cursor-pointer bg-black text-white"
                         type="submit"
                       >
                         <ChevronRightIcon />
