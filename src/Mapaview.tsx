@@ -1,0 +1,51 @@
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { IPData } from "./helpers";
+import { useRef } from "react";
+
+export default function MapView({ data }: IPData) {
+  const markerRef = useRef<L.Marker>(null);
+
+  if (!data || !data.location) return null;
+
+  const position: [number, number] = [data.location.lat, data.location.lng];
+
+  return (
+    <div className="w-full h-[400px] md:h-[500px]">
+      <MapContainer
+        center={position}
+        zoom={13}
+        scrollWheelZoom={false}
+        className="w-full h-full"
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker
+          position={position}
+          ref={markerRef}
+          eventHandlers={{
+            add: (e) => {
+              e.target.openPopup();
+            },
+          }}
+        >
+          <Popup>
+            <div>
+              <div>
+                <strong>IP:</strong> {data.ip}
+              </div>
+              <div>
+                <strong>Location:</strong> {data.location.city},{" "}
+                {data.location.country}
+              </div>
+              <div>
+                <strong>ISP:</strong> {data.isp}
+              </div>
+            </div>
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}

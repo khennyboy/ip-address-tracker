@@ -2,10 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChevronRightIcon, Loader2Icon } from "lucide-react";
+import { ChevronRightIcon, Loader2Icon, ShieldAlert } from "lucide-react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { BiError } from "react-icons/bi";
 import { z } from "zod";
 import { FormSchema, Props } from "./helpers";
 
@@ -19,7 +18,7 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
 
   useEffect(() => {
     GEOAPI({ query: "" });
-  }, []);
+  }, [GEOAPI]);
 
   return (
     <Form {...form}>
@@ -61,7 +60,7 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
               </FormControl>
               {form.formState.errors.query && (
                 <div className="flex items-center justify-center gap-1 mt-2 md:text-lg tracking-tight font-medium text-white">
-                  <BiError className="text-white text-xl" />
+                  <ShieldAlert className="text-xl text-white" />
                   <span>{form.formState.errors.query.message as string}</span>
                 </div>
               )}

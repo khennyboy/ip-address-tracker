@@ -1,13 +1,17 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-@theme{
+@theme {
   --color-very-dark-gray: hsl(0, 0%, 17%);
   --color-dark-gray: hsl(0, 0%, 59%);
   --font-input: 18px;
-  --font-sans: 'Rubik', sans-serif;
+  --font-sans: "Rubik", sans-serif;
+}
+.leaflet-container {
+  height: 400px;
+  width: 100%;
 }
 
 @theme inline {
@@ -125,4 +129,3 @@
     @apply bg-background text-foreground;
   }
 }
-

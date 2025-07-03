@@ -1,13 +1,15 @@
 import { toast } from "sonner";
 import { FormSchema, IPData, ipv4Regex, ipv6Regex } from "./helpers";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { z } from "zod";
 
 export default function useHandleApi() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<IPData>({} as IPData);
 
-  async function GEOAPI(data: z.infer<typeof FormSchema>) {
+  const GEOAPI = useCallback(async function GEOAPI(
+    data: z.infer<typeof FormSchema>
+  ) {
     const cleanedQuery = data.query.trim().replace(/^https?:\/\//, "");
     try {
       setIsLoading(true);
@@ -37,6 +39,7 @@ export default function useHandleApi() {
     } finally {
       setIsLoading(false);
     }
-  }
+  },
+  []);
   return { GEOAPI, isLoading, data };
 }
