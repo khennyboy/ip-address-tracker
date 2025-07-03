@@ -3,7 +3,7 @@ import { z } from "zod";
 export const ipv4Regex = /^(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.|$)){4}$/;
 export const ipv6Regex =
   /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|::1|([0-9a-fA-F]{1,4}:){1,7}:|:((:[0-9a-fA-F]{1,4}){1,7}))$/;
-export const domainRegex = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+export const domainRegex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export const FormSchema = z.object({
   query: z

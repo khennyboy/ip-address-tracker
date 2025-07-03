@@ -4,6 +4,7 @@ import IPAdressData from "./IpAdressData";
 import useHandleApi from "./useHandleApi";
 import { Heading } from "@radix-ui/themes";
 import MapView from "./Mapaview";
+import "./index2.css";
 
 function App() {
   const { GEOAPI, isLoading, data } = useHandleApi();

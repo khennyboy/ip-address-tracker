@@ -7,17 +7,16 @@ export default function useHandleApi() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<IPData>({} as IPData);
 
-  const GEOAPI = useCallback(async function GEOAPI(
-    data: z.infer<typeof FormSchema>
-  ) {
-    const cleanedQuery = data.query.trim().replace(/^https?:\/\//, "");
+  const GEOAPI = useCallback(async (formData: z.infer<typeof FormSchema>) => {
     try {
       setIsLoading(true);
-      const param = cleanedQuery
-        ? ipv4Regex.test(cleanedQuery) || ipv6Regex.test(cleanedQuery)
+
+      const cleanedQuery = formData.query.trim().replace(/^https?:\/\//, "");
+
+      const param =
+        ipv4Regex.test(cleanedQuery) || ipv6Regex.test(cleanedQuery)
           ? `ipAddress=${cleanedQuery}`
-          : `domain=${cleanedQuery}`
-        : "";
+          : `domain=${cleanedQuery}`;
 
       const response = await fetch(
         `https://geo.ipify.org/api/v2/country,city?apiKey=${
@@ -28,9 +27,11 @@ export default function useHandleApi() {
       const result = await response.json();
       console.log(response, "response");
       console.log(result, "result");
+
       if (!response.ok) {
         throw new Error("Failed to fetch IP data");
       }
+
       toast.success("IP data fetched successfully!");
       setData(result);
     } catch (error) {
@@ -39,7 +40,7 @@ export default function useHandleApi() {
     } finally {
       setIsLoading(false);
     }
-  },
-  []);
+  }, []);
+
   return { GEOAPI, isLoading, data };
 }
