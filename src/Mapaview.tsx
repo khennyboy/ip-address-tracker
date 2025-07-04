@@ -15,7 +15,7 @@ export default function MapView({ data }: IPData) {
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "95%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
