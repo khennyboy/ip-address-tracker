@@ -4,7 +4,7 @@ import IPAdressData from "./IpAdressData";
 import useHandleApi from "./useHandleApi";
 import { Heading } from "@radix-ui/themes";
 import MapView from "./Mapaview";
-import "./index2.css";
+
 
 function App() {
   const { GEOAPI, isLoading, data } = useHandleApi();
@@ -16,12 +16,14 @@ function App() {
           className: "w-[350px]",
         }}
       />
-      <header className=" bg-cover bg-[url('/pattern-bg-mobile.png')] py-[1rem_2rem] lg:bg-[url('/pattern-bg-desktop.png')] ">
-        <Heading className="text-center text-white">Ip Address Tracker</Heading>
+      <header className="relative bg-cover bg-[url('/pattern-bg-mobile.png')] pt-3 pb-44 md:pb-20 lg:bg-[url('/pattern-bg-desktop.png')]">
+        <Heading className="text-center text-white !mb-4" weight="medium">
+          Ip Address Tracker
+        </Heading>
         <IpTrackerForm GEOAPI={GEOAPI} isLoading={isLoading} />
+        <IPAdressData data={data} />
       </header>
       <main>
-        <IPAdressData data={data} />
         <MapView data={data} />
       </main>
     </>

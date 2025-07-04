@@ -16,14 +16,14 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
     },
   });
 
-  useEffect(() => {
-    GEOAPI({ query: "" });
-  }, [GEOAPI]);
+  // useEffect(() => {
+  //   GEOAPI({ query: "" });
+  // }, [GEOAPI]);
 
   return (
     <Form {...form}>
       <form
-        className="w-[90%] max-w-lg mx-auto [@media(min-width:500px)_and_(max-width:600px)]:w-[80%]"
+        className="w-[90%] max-w-lg mx-auto [@media(min-width:500px)_and_(max-width:700px)]:w-[80%]"
         onSubmit={form.handleSubmit(GEOAPI)}
       >
         <FormField
@@ -32,21 +32,21 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="relative">
+                <div className="relative rounded-xl  overflow-hidden">
                   <Input
                     placeholder="e.g. 8.8.8.8 or google.com"
                     {...field}
-                    className="py-6 bg-white text-black sm:py-7 md:text-lg"
+                    className="py-6 bg-white text-black sm:py-7  md:text-lg rounded-none"
                   />{" "}
-                  <div className="absolute right-0 top-0 h-full *:rounded-l-none flex items-center *:h-full">
+                  <div className="absolute right-0 top-0 h-full *:rounded-none flex items-center *:h-full">
                     <Button
                       size={isLoading ? "sm" : "icon"}
                       disabled={isLoading}
                       type={isLoading ? "button" : "submit"}
-                      className={`px-6 ${
+                      className={`!px-8 size-8  ${
                         isLoading
                           ? "disabled:pointer-events-auto disabled:cursor-not-allowed"
-                          : "cursor-pointer size-8"
+                          : "cursor-pointer"
                       }`}
                     >
                       {isLoading ? (
@@ -59,7 +59,7 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
                 </div>
               </FormControl>
               {form.formState.errors.query && (
-                <div className="flex items-center justify-center gap-1 mt-2 md:text-lg tracking-tight font-medium text-white">
+                <div className="flex items-center bg-red-500 p-2 rounded-lg justify-center gap-1 mt-1 lg:mt-1.5 md:text-lg tracking-tight font-medium text-white">
                   <ShieldAlert className="text-xl text-white" />
                   <span>{form.formState.errors.query.message as string}</span>
                 </div>

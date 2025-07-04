@@ -7,15 +7,15 @@ export default function MapView({ data }: IPData) {
 
   if (!data || !data.location) return null;
 
-  const position: [number, number] = [data.location.lat, data.location.lng];
+  const position: [number, number] = [data.location?.lat, data.location?.lng];
 
   return (
-    <div className="w-full h-[400px] md:h-[500px]">
+    <div className="w-full h-screen">
       <MapContainer
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        className="w-full h-full"
+        style={{ width: "100%", height: "100%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
