@@ -12,11 +12,11 @@ const IPAddressData = ({ data }: IPData) => {
     },
     {
       label: "LOCATION",
-      value: data.location?.city || "N/A",
+      value: data.country || "N/A",
     },
     {
       label: "TIMEZONE",
-      value: `UTC ${data.location?.timezone || "N/A"}`,
+      value: `UTC ${data.timezone || "N/A"}`,
     },
     {
       label: "ISP",
@@ -32,7 +32,7 @@ const IPAddressData = ({ data }: IPData) => {
       [@media(min-width:500px)_and_(max-width:768px)]:w-[70%]
       md:flex items-center
       shadow-md bg-white rounded-xl py-8
-      space-y-4 md:space-y-0 divide-x-2 divide-dark-gray
+      space-y-4 md:space-y-0 md:divide-x-2 divide-dark-gray
       *:text-center
     "
     >

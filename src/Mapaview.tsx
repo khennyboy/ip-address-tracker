@@ -5,9 +5,12 @@ import { useRef } from "react";
 export default function MapView({ data }: IPData) {
   const markerRef = useRef<L.Marker>(null);
 
-  if (!data || !data.location) return null;
+  if (!data) return null;
 
-  const position: [number, number] = [data.location?.lat, data.location?.lng];
+  const position: [number, number] = [
+    data.latitude || 6.4474,
+    data.longitude || 3.3909,
+  ];
 
   return (
     <div className="w-full h-screen">
@@ -36,11 +39,10 @@ export default function MapView({ data }: IPData) {
                 <strong>IP:</strong> {data.ip}
               </div>
               <div>
-                <strong>Location:</strong> {data.location.city},{" "}
-                {data.location.country}
+                <strong>Location:</strong> {data.country_name}, {data.region}
               </div>
               <div>
-                <strong>ISP:</strong> {data.isp}
+                <strong>ISP:</strong> {data.region}
               </div>
             </div>
           </Popup>

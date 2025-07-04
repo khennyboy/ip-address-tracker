@@ -32,13 +32,13 @@ export function IpTrackerForm({ GEOAPI, isLoading }: Props) {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="relative rounded-xl  overflow-hidden">
+                <div className="relative overflow-hidden">
                   <Input
                     placeholder="e.g. 8.8.8.8 or google.com"
                     {...field}
-                    className="py-6 bg-white text-black sm:py-7  md:text-lg rounded-none"
+                    className="py-6 bg-white text-black sm:py-7  md:text-lg rounded-xl"
                   />{" "}
-                  <div className="absolute right-0 top-0 h-full *:rounded-none flex items-center *:h-full">
+                  <div className="absolute right-0 top-0 h-full *:rounded-l-none *:rounded-r-xl flex items-center *:h-full">
                     <Button
                       size={isLoading ? "sm" : "icon"}
                       disabled={isLoading}
